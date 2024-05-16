@@ -2,9 +2,9 @@ rm -rf .amplify-hosting
 mkdir -p ./.amplify-hosting/compute
 cp -r ./build/server ./.amplify-hosting/compute/default
 cp -r ./node_modules ./.amplify-hosting/compute/default/node_modules
-
 cp -r ./build/client ./.amplify-hosting/static
-cp deploy-manifest.json ./.amplify-hosting/deploy-manifest.json
+
+cp ./amplify-plugin/deploy-manifest.json ./.amplify-hosting/deploy-manifest.json
 cp ./amplify-plugin/server.js ./.amplify-hosting/compute/default/server.js
 cp ./amplify-plugin/package.json ./.amplify-hosting/compute/default/package.json
 

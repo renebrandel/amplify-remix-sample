@@ -9,7 +9,7 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve build/server/index.js",
     "typecheck": "tsc",
-    "postbuild": "chmod +x bin/postbuild.sh && ./bin/postbuild.sh"
+    "postbuild": "chmod +x amplify-plugin/postbuild.sh && ./amplify-plugin/postbuild.sh"
   },
   "dependencies": {
     "@remix-run/express": "^2.9.2",
