@@ -5,9 +5,19 @@ cp -r ./node_modules ./.amplify-hosting/compute/default/node_modules
 
 cp -r ./build/client ./.amplify-hosting/static
 cp deploy-manifest.json ./.amplify-hosting/deploy-manifest.json
+cp ./amplify-plugin/server.js ./.amplify-hosting/compute/default/server.js
 
+echo "======./amplify-hosting===="
 ls ./.amplify-hosting
+echo
+echo "======./amplify-hosting/compute/default===="
 ls ./.amplify-hosting/compute/default
+echo
+echo "======./amplify-hosting/static===="
 ls ./.amplify-hosting/static
+echo
+echo "======./amplify-hosting/static/assets===="
 ls ./.amplify-hosting/static/assets
+echo
+echo "======deploy-manifest.json===="
 cat ./.amplify-hosting/deploy-manifest.json

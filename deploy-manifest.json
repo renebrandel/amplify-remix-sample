@@ -24,7 +24,7 @@
     {
       "name": "default",
       "runtime": "nodejs20.x",
-      "entrypoint": "index.js"
+      "entrypoint": "server.js"
     }
   ]
 }
