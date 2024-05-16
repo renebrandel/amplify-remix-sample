@@ -5,7 +5,7 @@ import express from "express";
 import * as build from "./index.js";
 
 const app = express();
-app.use(express.static("../../static"));
+app.use(express.static("static"));
 
 // and your app is "just a request handler"
 app.all("*", createRequestHandler({ build }));
