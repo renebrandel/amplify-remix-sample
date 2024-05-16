@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "framework": { "name": "remix", "version": "2.9.2" },
+  "routes": [
+    {
+      "path": "/*.*",
+      "target": {
+        "kind": "Static"
+      },
+      "fallback": {
+        "kind": "Compute",
+        "src": "default"
+      }
+    },
+    {
+      "path": "/*",
+      "target": {
+        "kind": "Compute",
+        "src": "default"
+      }
+    }
+  ],
+  "computeResources": [
+    {
+      "name": "default",
+      "runtime": "nodejs20.x",
+      "entrypoint": "index.js"
+    }
+  ]
+}
