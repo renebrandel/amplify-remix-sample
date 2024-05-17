@@ -64,7 +64,7 @@ function amplifyHostingPlugin(): Plugin {
   let currentCommand: string
   let isSsr: boolean | undefined
   return {
-    name: 'my-plugin',
+    name: 'aws-amplify-remix-adapter',
     apply: 'build',
     config(_, { command, isSsrBuild }) {
       currentCommand = command
@@ -76,7 +76,7 @@ function amplifyHostingPlugin(): Plugin {
     async writeBundle() {
       if (currentCommand !== 'build') { return }
       if (isSsr) {
-        await mkdir(HOSTING_COMPUTE_PATH, { recursive: true })
+        await mkdir(join(resolvedConfig.root, HOSTING_COMPUTE_PATH), { recursive: true })
         await cp(join(resolvedConfig.build.outDir), join(resolvedConfig.root, HOSTING_COMPUTE_PATH), { recursive: true })
         await cp(join(resolvedConfig.root, 'node_modules'), join(resolvedConfig.root, HOSTING_COMPUTE_PATH, 'node_modules'), { recursive: true })
         await writeFile(join(resolvedConfig.root, HOSTING_COMPUTE_PATH, 'server.js'), serverCode)
