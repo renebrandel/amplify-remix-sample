@@ -3,6 +3,7 @@ import { installGlobals } from "@remix-run/node";
 import { defineConfig, Plugin, ResolvedConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { mkdir, writeFile, cp, rm } from 'node:fs/promises'
+import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 
 installGlobals();
@@ -83,7 +84,9 @@ function amplifyHostingPlugin(): Plugin {
         await writeFile(join(resolvedConfig.root, HOSTING_COMPUTE_PATH, 'package.json'), JSON.stringify(packageJson))
         await writeFile(join(resolvedConfig.root, DEPLOY_OUTPUT_PATH, 'deploy-manifest.json'), JSON.stringify(deploymentManifest))
       } else {
-        await rm(join(resolvedConfig.root, DEPLOY_OUTPUT_PATH), {recursive: true})
+        if (existsSync(join(resolvedConfig.root, DEPLOY_OUTPUT_PATH))) {
+          await rm(join(resolvedConfig.root, DEPLOY_OUTPUT_PATH), { recursive: true })
+        }
         await mkdir(join(resolvedConfig.root, HOSTING_STATIC_PATH), { recursive: true })
         await cp(resolvedConfig.build.outDir, join(resolvedConfig.root, HOSTING_STATIC_PATH), { recursive: true })
       }
